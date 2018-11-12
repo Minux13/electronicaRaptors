@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style>  
+
+body {
+    margin: 0rem;
+    font-family: 'Roboto', sans-serif;
+	min-height: 100vh;
+}
+#canvas {
+    background:  linear-gradient(160deg,#0b0c22,#004400);  /*#0b0c22;*/
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+}
+#title {
+    height: 60vh;
+    width: 100%;/*vw;*/
+    z-index: 1;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#electronica{
+    text-transform: uppercase;
+    color: #090;
+    font-size: 1em;
+    font-weight: 100;
+}
+#raptors{
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 10px;
+    font-size: 1.3em;
+}
+#img-logo{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+#title h1 {
+    display: block;
+    position: relative;
+    margin: 0px;
+    top: 50%;
+}
+.gallery{
+    width: 100%;
+    text-align: center;	
+}
+.gallery-element{
+    margin: 30px;
+    display: inline-block;
+    overflow: hidden;	
+    position: relative;
+}
+.gallery-element img{
+    width: 100%;	
+    transition:         transform 0.4s linear; /* vendorless fallback */
+    -o-transition:      transform 0.4s linear; /* opera */
+    -ms-transition:     transform 0.4s linear; /* IE 10 */
+    -moz-transition:    transform 0.4s linear; /* Firefox */
+    -webkit-transition: transform 0.4s linear; /*safari and chrome */
+}
+
+.shadow-hover{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* display: inline-flex; */
+    opacity: 0;
+    color: white;
+    font-size: 28px;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    /* z-index: 57; */
+    top: 0px;
+    transition:         opacity 0.4s linear; /* vendorless fallback */
+    -o-transition:      opacity 0.4s linear; /* opera */
+    -ms-transition:     opacity 0.4s linear; /* IE 10 */
+    -moz-transition:    opacity 0.4s linear; /* Firefox */
+    -webkit-transition: opacity 0.4s linear; /*safari and chrome */
+}
+
+.description{
+    /*position: absolute;
+    top: calc(50% - 28px);*/
+    margin: 0;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gallery-element:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-element:hover .shadow-hover {
+    opacity: 1;
+}
+
+#info{
+    width: 100%;
+}
+
+.principal{
+    padding: 45px 80px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #0a0f20;   
+}
+
+@media only screen and (min-width: 0px) {
+    .column{
+        width: 100%;
+        display: inline-block;
+    }
+    
+    #info{
+        padding-top: 30px;
+        box-sizing: border-box;
+        background: #000000;
+        color: #ffffff;
+    }
+    .info{
+        display: flex;
+        margin: 0 30px;
+    }
+    #tel{
+    }
+    #email{
+    }
+    #address{
+    }
+    #social-media{
+        padding: 1em 60px;
+        margin: 0 !important;
+        background: #008000;
+        box-sizing: border-box;
+    }
+    #social-media i{
+        margin: 0 15px;
+    }
+    .text-info-element i{
+        color: green;
+    }
+    .text-info-element{
+        margin: 12px;
+    }
+    .info-element-title{
+        font-weight: bold;
+        color: white
+    }
+    .info-element-descriptcion{
+        color: #aaa;
+        margin-top: 12px;
+    }
+
+}
+@media only screen and (min-width: 600px) {
+    .column{
+        width: 48%;
+        display: inline-block;
+    }
+
+    #info{
+        display : flex;
+        padding-left: 0px;
+        box-sizing: border-box;
+        background: #000000;
+        color: #ffffff;
+        padding-top: 0px;
+    }
+    .info{
+        display: block;
+        padding: 15px 0px;
+        text-align: center;
+        margin: 0px;
+    }
+    #tel{
+        width: 28%;
+    }
+    #email{
+        width: 28%;
+    }
+    #address{
+        width: 28%;
+    }
+    #social-media{
+        width: 16%;
+        padding: 3.5em 0;
+        background: #008000;
+        box-sizing: border-box;
+    }
+    #social-media i{
+        margin: 0 15px;
+    }
+    .text-info-element i{
+        color: green;
+        margin-bottom: 14px;
+    }
+    .text-info-element{
+        margin: 1px;
+    }
+    .info-element-title{
+        font-weight: bold;
+        color: white
+    }
+    .info-element-descriptcion{
+        color: #aaa;
+        margin-top: 12px;
+    }
+
+}
+@media only screen and (min-width: 1100px) {
+    .column{
+        width: 32%;
+        display: inline-block;
+    }
+    
+    #info{
+        display : flex;
+        padding-left: 60px;
+        box-sizing: border-box;
+        background: #000000;
+        color: #ffffff;
+    }
+    .info{
+        padding: 15px 0px;
+        display: flex;
+        text-align: left;
+    }
+    #tel{
+        width: 26%;
+    }
+    #email{
+        width: 26%;
+    }
+    #address{
+        width: 26%;
+    }
+    #social-media{
+        width: 24%;
+        padding: 2.5em;
+        background: #008000;
+        box-sizing: border-box;
+    }
+    #social-media i{
+        margin: 0 15px;
+    }
+    .text-info-element i{
+        color: green;
+    }
+    .text-info-element{
+        margin: 12px;
+    }
+    .info-element-title{
+        font-weight: bold;
+        color: white
+    }
+    .info-element-descriptcion{
+        color: #aaa;
+        margin-top: 12px;
+    }
+}
+
+
+</style> 
+
+</head>
+
+<body>
+<div id="title">
+    <canvas id="canvas"></canvas>
+    <img id="img-logo" width="110" src="LOGOR.png">
+    <h1><span id="electronica">Electrónica</span> <span id="raptors">Raptors</span></h1>
+</div>
+
+<div class="principal">
+<h3>Lorem Ipsum</h3><br>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+<div class="gallery">
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img01.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img02.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img03.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img04.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img05.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img06.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element">
+            <img src="img.jpg">
+	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+       </div>
+    </div>
+ </div>
+
+<div id="info">
+    <div id="tel" class="info">
+         <div class="text-info-element"><i class="fas fa-phone"></i> </div>
+         <div class="text-info-element">
+            <div class="info-element-title">123654657</div>
+            <div class="info-element-descriptcion">Lunes a vienres 8:00 a 16:00 hrs.</div>
+         </div>
+    </div>
+    <div id="email" class="info">
+        <div class="text-info-element"><i class="fas fa-envelope"></i> </div>
+        <div class="text-info-element">
+            <div class="info-element-title">toño@toño.com</div>
+            <div class="info-element-descriptcion">Envia un correo</div>
+        </div>
+    </div>
+    <div id="address" class="info">
+        <div class="text-info-element"><i class="fas fa-map-marker-alt"></i> </div>
+        <div class="text-info-element">
+            <div class="info-element-title">Monterrey, N.L.</div>
+            <div class="info-element-descriptcion">Calle Colonia Número</div>
+        </div>
+    </div>
+    <div id="social-media" class="info">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+
+</div>
+
+<script>
+let resizeReset = function() {
+	w = canvasBody.width = window.innerWidth;
+	h = canvasBody.height = window.innerHeight * (0.60);
+}
+
+const opts = { 
+	particleColor: "rgb(200,200,200)",
+	lineColor: "rgb(200,200,200)",
+	particleAmount: 36,
+	defaultSpeed: 1,
+	variantSpeed: 1,
+	defaultRadius: 2,
+	variantRadius: 2,
+	linkRadius: 200,
+};
+
+window.addEventListener("resize", function(){
+	deBouncer();
+});
+
+let deBouncer = function() {
+    clearTimeout(tid);
+    tid = setTimeout(function() {
+        resizeReset();
+    }, delay);
+};
+
+let checkDistance = function(x1, y1, x2, y2){ 
+	return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+};
+
+let linkPoints = function(point1, hubs){ 
+	for (let i = 0; i < hubs.length; i++) {
+		let distance = checkDistance(point1.x, point1.y, hubs[i].x, hubs[i].y);
+		let opacity = 1 - distance / opts.linkRadius;
+		if (opacity > 0) { 
+			drawArea.lineWidth = 0.5;
+			drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
+			drawArea.beginPath();
+			drawArea.moveTo(point1.x, point1.y);
+			drawArea.lineTo(hubs[i].x, hubs[i].y);
+			drawArea.closePath();
+			drawArea.stroke();
+		}
+	}
+}
+
+Particle = function(xPos, yPos){ 
+	this.x = Math.random() * w; 
+	this.y = Math.random() * h;
+	this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed; 
+	this.directionAngle = Math.floor(Math.random() * 360); 
+	this.color = opts.particleColor;
+	this.radius = opts.defaultRadius + Math.random() * opts. variantRadius; 
+	this.vector = {
+		x: Math.cos(this.directionAngle) * this.speed,
+		y: Math.sin(this.directionAngle) * this.speed
+	};
+	this.update = function(){ 
+		this.border(); 
+		this.x += this.vector.x; 
+		this.y += this.vector.y; 
+	};
+	this.border = function(){ 
+		if (this.x >= w || this.x <= 0) { 
+			this.vector.x *= -1;
+		}
+		if (this.y >= h || this.y <= 0) {
+			this.vector.y *= -1;
+		}
+		if (this.x > w) this.x = w;
+		if (this.y > h) this.y = h;
+		if (this.x < 0) this.x = 0;
+		if (this.y < 0) this.y = 0;	
+	};
+	this.draw = function(){ 
+		drawArea.beginPath();
+		drawArea.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+		drawArea.closePath();
+		drawArea.fillStyle = this.color;
+		drawArea.fill();
+	};
+};
+
+function setup(){ 
+	particles = [];
+	resizeReset();
+	for (let i = 0; i < opts.particleAmount; i++){
+		particles.push( new Particle() );
+	}
+	window.requestAnimationFrame(loop);
+}
+
+function loop(){ 
+	window.requestAnimationFrame(loop);
+	drawArea.clearRect(0,0,w,h);
+	for (let i = 0; i < particles.length; i++){
+		particles[i].update();
+		particles[i].draw();
+	}
+	for (let i = 0; i < particles.length; i++){
+		linkPoints(particles[i], particles);
+	}
+}
+
+const canvasBody = document.getElementById("canvas"),
+drawArea = canvasBody.getContext("2d");
+let delay = 200, tid,
+rgb = opts.lineColor.match(/\d+/g);
+resizeReset();
+setup();
+
+document.getElementById('body')
+
+</script>
+</body>
+</html>
