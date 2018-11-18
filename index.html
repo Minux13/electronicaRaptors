@@ -55,10 +55,7 @@ body {
     margin: 0px;
     top: 50%;
 }
-.gallery{
-    width: 100%;
-    text-align: center;	
-}
+
 .gallery-element{
     margin: 30px;
     display: inline-block;
@@ -66,6 +63,7 @@ body {
     position: relative;
 }
 .gallery-element img{
+    vertical-align: middle;
     width: 100%;	
     transition:         transform 0.4s linear; /* vendorless fallback */
     -o-transition:      transform 0.4s linear; /* opera */
@@ -123,6 +121,12 @@ body {
 }
 
 @media only screen and (min-width: 0px) {
+    .gallery{
+        width: 100%;
+        text-align: center;	
+        padding: 0 35px;
+        box-sizing: border-box;
+    }
     .column{
         width: 100%;
         display: inline-block;
@@ -170,6 +174,12 @@ body {
 
 }
 @media only screen and (min-width: 600px) {
+    .gallery{
+        width: 100%;
+        text-align: center;	
+        padding: 0 35px;
+        box-sizing: border-box;
+    }
     .column{
         width: 48%;
         display: inline-block;
@@ -225,6 +235,12 @@ body {
 
 }
 @media only screen and (min-width: 1100px) {
+    .gallery{
+        width: 100%;
+        text-align: center;	
+        padding: 0 150px;
+        box-sizing: border-box;
+    }
     .column{
         width: 32%;
         display: inline-block;
@@ -276,6 +292,47 @@ body {
     }
 }
 
+.link-social-media i{
+    color: #fff;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 90px auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 </style> 
 
@@ -284,7 +341,7 @@ body {
 <body>
 <div id="title">
     <canvas id="canvas"></canvas>
-    <img id="img-logo" width="110" src="LOGOR.png">
+    <img id="img-logo" width="110" src="img/LOGOR.png">
     <h1><span id="electronica">Electrónica</span> <span id="raptors">Raptors</span></h1>
 </div>
 
@@ -295,85 +352,117 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor inci
 
 <div class="gallery">
     <div class="column">
-        <div class="gallery-element">
-            <img src="img01.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/1RaptorSPM-V.01.jpg">
+	    <div class="shadow-hover"><span class="description">RaptorSPM-V.01</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img02.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/2pcbs.jpg">
+	    <div class="shadow-hover"><span class="description">PCB's</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img03.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/4diagrama.jpg">
+	    <div class="shadow-hover"><span class="description">Diagrama</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img04.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/5amtmega328.jpg">
+	    <div class="shadow-hover"><span class="description">Amtmega328</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img05.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/6SPMRaptor.jpg">
+	    <div class="shadow-hover"><span class="description">SPM Raptor</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img06.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/7raptors.jpg">
+	    <div class="shadow-hover"><span class="description">Raptors</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/8pcbSMD.jpg">
+	    <div class="shadow-hover"><span class="description">PCB SMD</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/9PdXShow.jpg">
+	    <div class="shadow-hover"><span class="description">PdXShow</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/10kicad_pcb.jpg">
+	    <div class="shadow-hover"><span class="description">Kicad PCB</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/11pcbsCompletas.jpg">
+	    <div class="shadow-hover"><span class="description">PCB's completas</span></div>
        </div>
     </div>
     <div class="column">
-        <div class="gallery-element">
-            <img src="img.jpg">
-	        <div class="shadow-hover"><span class="description">Descripción</span></div>
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/12kicadPCB.jpg">
+	    <div class="shadow-hover"><span class="description">Kicad PCB</span></div>
        </div>
     </div>
+    <div class="column">
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/13EscarabajoBoard.jpg">
+	    <div class="shadow-hover"><span class="description">Escarabajo Board</span></div>
+       </div>
+    </div>
+
+    <div class="column">
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/14kicad.jpg">
+	    <div class="shadow-hover"><span class="description">Kicad</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/15ensamble.jpg">
+	    <div class="shadow-hover"><span class="description">Ensamble</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/16DmxNhfgU8AE2FZA.jpg">
+	    <div class="shadow-hover"><span class="description">...</span></div>
+       </div>
+    </div>
+    <div class="column">
+        <div class="gallery-element" onclick="displayModal(this);">
+            <img src="img/17DjDZTCxUcAAlPQn.jpg">
+	    <div class="shadow-hover"><span class="description">...</span></div>
+       </div>
+    </div>
+
  </div>
 
 <div id="info">
     <div id="tel" class="info">
          <div class="text-info-element"><i class="fas fa-phone"></i> </div>
          <div class="text-info-element">
-            <div class="info-element-title">123654657</div>
-            <div class="info-element-descriptcion">Lunes a vienres 8:00 a 16:00 hrs.</div>
+            <div class="info-element-title">812-354-1177</div>
+            <div class="info-element-descriptcion">Movil</div>
          </div>
     </div>
     <div id="email" class="info">
         <div class="text-info-element"><i class="fas fa-envelope"></i> </div>
         <div class="text-info-element">
-            <div class="info-element-title">toño@toño.com</div>
+            <div class="info-element-title">antonio.raptors@gmail.com</div>
             <div class="info-element-descriptcion">Envia un correo</div>
         </div>
     </div>
@@ -385,11 +474,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor inci
         </div>
     </div>
     <div id="social-media" class="info">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
+        <a target="_blank" href="https://twitter.com/Antonio_Raptors" class="link-social-media"><i class="fab fa-twitter"></i>   </a>
+        <a target="_blank" href="https://www.facebook.com/electronicaraptors/?ref=bookmarks" class="link-social-media"><i class="fab fa-facebook-f"></i></a>
+        <a target="_blank" href="https://www.instagram.com/antonio_raptors/" class="link-social-media"><i class="fab fa-instagram"></i> </a>
     </div>
 
 </div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="contt" style="width:40%;padding:0px;box-sizing: border-box;display: inline-block;">  
+    </div>
+    <div id="contt2" style="width:40%;padding:0px;box-sizing: border-box;display: inline-block;">      
+    	<h3>Lorem Ipsum</h3><br>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+  </div>
+</div>
+
+
+
 
 <script>
 let resizeReset = function() {
@@ -504,7 +612,37 @@ rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
 
-document.getElementById('body')
+
+// Get the modal
+var modal = document.getElementById('myModal');
+// Get the button that opens the modal
+var element_gallery = document.getElementsByClassName("gallery-element");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks on the button, open the modal 
+function displayModal(e){
+    var childImg = e.children[0];
+    modal.style.display = "block";
+    var imgSrc = childImg.getAttribute('src');
+    var contt = document.getElementById('contt').innerHTML = '<img style="width:100%" src="'+ imgSrc +'">';
+
+    //console.log(imgSrc);
+}
+//element_gallery.onclick = function() {
+//    modal.style.display = "block";}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 
 </script>
 </body>
