@@ -171,7 +171,19 @@ body {
         color: #aaa;
         margin-top: 12px;
     }
-
+    #contt{
+        width:100%;
+        padding:0px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+    #contt2{
+        width:100%;
+        padding:0 0 0 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+    }
 }
 @media only screen and (min-width: 600px) {
     .gallery{
@@ -232,7 +244,19 @@ body {
         color: #aaa;
         margin-top: 12px;
     }
-
+    #contt{
+        width:40%;
+        padding:0px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+    #contt2{
+        width:55%;
+        padding:0 0 0 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+    }
 }
 @media only screen and (min-width: 1100px) {
     .gallery{
@@ -290,6 +314,19 @@ body {
         color: #aaa;
         margin-top: 12px;
     }
+    #contt{
+        width:40%;
+        padding:0px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+    #contt2{
+        width:55%;
+        padding:0 0 0 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+    }
 }
 
 .link-social-media i{
@@ -313,10 +350,17 @@ body {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 90px auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
+    margin: 90px auto;
+    /*opacity: 0;
+    transition:         all 0.9s linear; 
+    -o-transition:      all 0.9s linear;
+    -ms-transition:     all 0.9s linear;
+    -moz-transition:    all 0.9s linear;
+    -webkit-transition: all 0.9s linear; */
+
 }
 
 /* The Close Button */
@@ -332,6 +376,10 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#myModal{
+    transition: margin 2s;
 }
 
 </style> 
@@ -487,16 +535,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor inci
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <div id="contt" style="width:40%;padding:0px;box-sizing: border-box;display: inline-block;">  
+    <div id="contt">  
     </div>
-    <div id="contt2" style="width:40%;padding:0px;box-sizing: border-box;display: inline-block;">      
+    <div id="contt2">      
     	<h3>Lorem Ipsum</h3><br>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
     </div>
   </div>
 </div>
-
-
 
 
 <script>
@@ -615,31 +661,34 @@ setup();
 
 // Get the modal
 var modal = document.getElementById('myModal');
-// Get the button that opens the modal
+// Get the element that opens the modal
 var element_gallery = document.getElementsByClassName("gallery-element");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-// When the user clicks on the button, open the modal 
+// Get modal-content
+var modalContent = document.getElementsByClassName('modal-content')[0];
+// When the user clicks on the elements, open the modal 
 function displayModal(e){
     var childImg = e.children[0];
     modal.style.display = "block";
     var imgSrc = childImg.getAttribute('src');
     var contt = document.getElementById('contt').innerHTML = '<img style="width:100%" src="'+ imgSrc +'">';
-
-    //console.log(imgSrc);
+    /*modalContent.style.opacity = "1";
+    modalContent.style.margin = "90px auto";*/
 }
-//element_gallery.onclick = function() {
-//    modal.style.display = "block";}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
+    /*modalContent.style.opacity = "0";
+    modalContent.style.margin = "0px auto";*/
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        /*modalContent.style.opacity = "0";
+        modalContent.style.margin = "0px auto";*/
     }
 }
 
